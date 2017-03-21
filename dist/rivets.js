@@ -1280,7 +1280,9 @@
           _ref4 = (_ref2 = (_ref3 = weakmap[r]) != null ? _ref3.callbacks[k] : void 0) != null ? _ref2 : [];
           for (_i = 0, _len = _ref4.length; _i < _len; _i++) {
             callback = _ref4[_i];
-            callback();
+            if (typeof callback === 'function') {
+              callback();
+            }
           }
         }
         return response;

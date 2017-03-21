@@ -27,8 +27,9 @@ Rivets.public.adapters['.'] =
       response = original.apply obj, arguments
 
       for r, k of map.pointers
-        callback() for callback in weakmap[r]?.callbacks[k] ? []
-
+        # callback() for callback in weakmap[r]?.callbacks[k] ? []
+        for callback in weakmap[r]?.callbacks[k] ? []
+            callback() if typeof callback == 'function'
       response
 
   observeMutations: (obj, ref, keypath) ->
